@@ -294,7 +294,7 @@ export function Header() {
                 </button>
                 
                 {aboutMenuOpen && (
-                  <div className="absolute top-full right-0 mt-1 w-72 bg-card border border-border rounded-2xl shadow-xl z-50 py-2">
+                  <div className="absolute top-full right-0 w-72 bg-card border border-border rounded-2xl shadow-xl z-50 py-2">
                     {aboutLinks.map((link) => (
                       <Link
                         key={link.name}
