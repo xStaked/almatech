@@ -17,9 +17,9 @@ export function SocialCause() {
               </p>
             </div>
           </div>
-          
+
           <div className="hidden md:block w-px h-8 bg-border" />
-          
+
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
               <PawPrint className="h-5 w-5 text-secondary" />

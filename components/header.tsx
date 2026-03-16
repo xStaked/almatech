@@ -118,8 +118,8 @@ export function Header() {
       (product) =>
         product.name.toLowerCase().includes(query) ||
         product.tagline.toLowerCase().includes(query) ||
-        product.category.some(cat => cat.toLowerCase().includes(query)) ||
-        product.forPets.some(pet => pet.toLowerCase().includes(query))
+        product.category.toLowerCase().includes(query) ||
+        product.pets.some(pet => pet.toLowerCase().includes(query))
     )
     setSearchResults(filtered)
   }, [searchQuery])
@@ -320,10 +320,12 @@ export function Header() {
               </div>
               
               <div className="w-px h-6 bg-border mx-1" />
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Mi cuenta</span>
-              </Button>
+              <Link href="/mi-cuenta">
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">Mi cuenta</span>
+                </Button>
+              </Link>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -483,10 +485,12 @@ export function Header() {
                     
                     {/* Mobile Footer */}
                     <div className="border-t border-border p-4 space-y-3">
-                      <Button variant="outline" className="w-full justify-center gap-2 font-semibold">
-                        <User className="h-4 w-4" />
-                        Mi Cuenta
-                      </Button>
+                      <Link href="/mi-cuenta" className="w-full" onClick={() => setIsOpen(false)}>
+                        <Button variant="outline" className="w-full justify-center gap-2 font-semibold">
+                          <User className="h-4 w-4" />
+                          Mi Cuenta
+                        </Button>
+                      </Link>
                       <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold">
                         Iniciar Sesion
                       </Button>
