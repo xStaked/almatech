@@ -112,7 +112,7 @@ export function Header() {
       setSearchResults([])
       return
     }
-    
+
     const query = searchQuery.toLowerCase()
     const filtered = products.filter(
       (product) =>
@@ -132,7 +132,7 @@ export function Header() {
         setSearchQuery("")
       }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
@@ -153,7 +153,7 @@ export function Header() {
         <span className="font-bold">$150.000 COP</span>
         <span className="hidden md:inline"> | 5% de tu compra apoya refugios de animales</span>
       </div>
-      
+
       {/* Main Header */}
       <div className="border-b border-border/40">
         <div className="container mx-auto px-4">
@@ -161,21 +161,22 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <div className="flex items-center">
-                <div className="w-9 h-9 bg-accent rounded-xl flex items-center justify-center mr-2">
-                  <PawPrint className="h-5 w-5 text-accent-foreground" />
-                </div>
-                <span className="text-xl font-extrabold text-foreground tracking-tight">
-                  Almatech
-                </span>
+                <Image
+                  src="/logo.png"
+                  alt="Almatech"
+                  width={200}
+                  height={50}
+                  className="h-25 w-auto"
+                  priority
+                />
               </div>
             </Link>
 
             {/* Search Bar - Desktop */}
             <div className="hidden md:flex flex-1 max-w-xl mx-4" ref={searchContainerRef}>
               <div className="relative w-full">
-                <div className={`flex items-center w-full border-2 rounded-full transition-all ${
-                  searchOpen || searchQuery ? 'border-secondary bg-card shadow-lg' : 'border-border bg-muted/50 hover:border-secondary/50'
-                }`}>
+                <div className={`flex items-center w-full border-2 rounded-full transition-all ${searchOpen || searchQuery ? 'border-secondary bg-card shadow-lg' : 'border-border bg-muted/50 hover:border-secondary/50'
+                  }`}>
                   <Search className="h-5 w-5 text-muted-foreground ml-4 flex-shrink-0" />
                   <input
                     ref={searchInputRef}
@@ -198,7 +199,7 @@ export function Header() {
                     </button>
                   )}
                 </div>
-                
+
                 {/* Search Results Dropdown */}
                 {searchOpen && (searchQuery || searchResults.length > 0) && (
                   <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-2xl shadow-xl overflow-hidden z-50">
@@ -283,7 +284,7 @@ export function Header() {
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-2 flex-shrink-0">
               {/* About Us Dropdown */}
-              <div 
+              <div
                 className="relative"
                 onMouseEnter={() => setAboutMenuOpen(true)}
                 onMouseLeave={() => setAboutMenuOpen(false)}
@@ -292,7 +293,7 @@ export function Header() {
                   Nosotros
                   <ChevronDown className={`h-4 w-4 transition-transform ${aboutMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
-                
+
                 {aboutMenuOpen && (
                   <div className="absolute top-full right-0 w-72 bg-card border border-border rounded-2xl shadow-xl z-50 py-2">
                     {aboutLinks.map((link) => (
@@ -318,7 +319,7 @@ export function Header() {
                   </div>
                 )}
               </div>
-              
+
               <div className="w-px h-6 bg-border mx-1" />
               <Link href="/mi-cuenta">
                 <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
@@ -326,9 +327,9 @@ export function Header() {
                   <span className="sr-only">Mi cuenta</span>
                 </Button>
               </Link>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="text-muted-foreground hover:text-foreground relative"
                 onClick={openCart}
               >
@@ -347,17 +348,17 @@ export function Header() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-1">
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="text-muted-foreground"
                 onClick={() => setSearchOpen(!searchOpen)}
               >
                 <Search className="h-5 w-5" />
               </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="text-muted-foreground relative"
                 onClick={openCart}
               >
@@ -381,7 +382,7 @@ export function Header() {
                     <div className="flex items-center justify-between p-4 border-b border-border">
                       <span className="font-bold text-foreground">Menu</span>
                     </div>
-                    
+
                     {/* Mobile Categories */}
                     <div className="flex-1 overflow-y-auto">
                       <div className="py-2">
@@ -405,7 +406,7 @@ export function Header() {
                               </div>
                               <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${mobileSubmenu === category.name ? 'rotate-180' : ''}`} />
                             </button>
-                            
+
                             {mobileSubmenu === category.name && (
                               <div className="bg-muted/30 py-2">
                                 <Link
@@ -449,7 +450,7 @@ export function Header() {
                           </div>
                         ))}
                       </div>
-                      
+
                       <div className="border-t border-border py-2">
                         <p className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                           Nosotros
@@ -461,7 +462,7 @@ export function Header() {
                           <span className="font-semibold text-foreground">Conoce Almatech</span>
                           <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`} />
                         </button>
-                        
+
                         {mobileAboutOpen && (
                           <div className="bg-muted/30 py-2">
                             {aboutLinks.map((link) => (
@@ -482,7 +483,7 @@ export function Header() {
                         )}
                       </div>
                     </div>
-                    
+
                     {/* Mobile Footer */}
                     <div className="border-t border-border p-4 space-y-3">
                       <Link href="/mi-cuenta" className="w-full" onClick={() => setIsOpen(false)}>
@@ -526,7 +527,7 @@ export function Header() {
                 </button>
               )}
             </div>
-            
+
             {/* Mobile Search Results */}
             {searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-2xl shadow-xl overflow-hidden z-50 max-h-[60vh] overflow-y-auto">
@@ -568,11 +569,10 @@ export function Header() {
               >
                 <Link
                   href={category.href}
-                  className={`flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
-                    activeCategory === category.name 
-                      ? 'text-secondary bg-background' 
-                      : 'text-foreground hover:text-secondary'
-                  }`}
+                  className={`flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${activeCategory === category.name
+                    ? 'text-secondary bg-background'
+                    : 'text-foreground hover:text-secondary'
+                    }`}
                 >
                   <category.icon className="h-5 w-5" />
                   {category.name}
