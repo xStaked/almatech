@@ -3,15 +3,15 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { 
-  LayoutDashboard, 
-  Users, 
-  Package, 
-  ShoppingCart, 
-  DollarSign, 
-  BarChart3, 
-  Settings, 
-  Menu, 
+import {
+  LayoutDashboard,
+  Users,
+  Package,
+  ShoppingCart,
+  DollarSign,
+  BarChart3,
+  Settings,
+  Menu,
   X,
   LogOut,
   Bell,
@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 const navigation = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -52,7 +53,7 @@ export default function AdminLayout({
     <div className="min-h-screen bg-muted/30">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-40 bg-foreground/50 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
@@ -67,12 +68,19 @@ export default function AdminLayout({
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-4 border-b border-primary-foreground/10">
             <Link href="/admin" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                <PawPrint className="h-5 w-5 text-accent-foreground" />
+              <div className="flex items-center">
+                <Image
+                  src="/logo-cream.png"
+                  alt="Almatech"
+                  width={200}
+                  height={50}
+                  className="h-25 w-auto"
+                  priority
+                />
               </div>
-              <span className="font-bold text-lg">Almatech</span>
+
             </Link>
-            <button 
+            <button
               onClick={() => setSidebarOpen(false)}
               className="lg:hidden p-1 hover:bg-primary-foreground/10 rounded"
             >
@@ -83,7 +91,7 @@ export default function AdminLayout({
           {/* Navigation */}
           <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
             {navigation.map((item) => {
-              const isActive = pathname === item.href || 
+              const isActive = pathname === item.href ||
                 (item.href !== "/admin" && pathname.startsWith(item.href))
               return (
                 <Link
@@ -91,8 +99,8 @@ export default function AdminLayout({
                   href={item.href}
                   className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                    isActive 
-                      ? "bg-accent text-accent-foreground" 
+                    isActive
+                      ? "bg-accent text-accent-foreground"
                       : "text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground"
                   )}
                 >

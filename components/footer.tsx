@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { PawPrint, Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
 
 const footerLinks = {
   productos: [
@@ -42,27 +43,33 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
-                <PawPrint className="w-6 h-6 text-secondary-foreground" />
+              <div className="flex items-center">
+                <Image
+                  src="/logo-cream.png"
+                  alt="Almatech"
+                  width={200}
+                  height={50}
+                  className="h-25 w-auto"
+                  priority
+                />
               </div>
-              <span className="text-2xl font-bold">Almatech</span>
             </Link>
-            
+
             <p className="text-primary-foreground/80 mb-6 leading-relaxed max-w-sm">
-              Productos veterinarios con nanotecnologia avanzada. 
+              Productos veterinarios con nanotecnologia avanzada.
               Cuidamos a quienes te aman sin condicion.
             </p>
 
             <div className="space-y-3">
-              <a 
-                href="mailto:info@almatech.co" 
+              <a
+                href="mailto:info@almatech.co"
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-secondary transition-colors"
               >
                 <Mail className="w-5 h-5" />
                 info@almatech.co
               </a>
-              <a 
-                href="tel:+573001234567" 
+              <a
+                href="tel:+573001234567"
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-secondary transition-colors"
               >
                 <Phone className="w-5 h-5" />
@@ -81,7 +88,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.productos.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-primary-foreground/70 hover:text-secondary transition-colors"
                   >
@@ -98,7 +105,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.empresa.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-primary-foreground/70 hover:text-secondary transition-colors"
                   >
@@ -115,7 +122,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.afiliados.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-primary-foreground/70 hover:text-secondary transition-colors"
                   >
@@ -132,7 +139,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-primary-foreground/70 hover:text-secondary transition-colors"
                   >

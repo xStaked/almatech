@@ -3,15 +3,15 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { 
-  LayoutDashboard, 
-  Package, 
-  Heart, 
-  Gift, 
-  Star, 
+import {
+  LayoutDashboard,
+  Package,
+  Heart,
+  Gift,
+  Star,
   PawPrint,
   Settings,
-  Menu, 
+  Menu,
   X,
   LogOut,
   Bell,
@@ -25,6 +25,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 const navigation = [
   { name: "Mi Panel", href: "/mi-cuenta", icon: LayoutDashboard },
@@ -76,7 +77,7 @@ export default function CustomerLayout({
   const pathname = usePathname()
 
   const getLevelIcon = (level: string) => {
-    switch(level) {
+    switch (level) {
       case "Bronce": return Star
       case "Plata": return Star
       case "Oro": return Trophy
@@ -86,7 +87,7 @@ export default function CustomerLayout({
   }
 
   const getLevelColor = (level: string) => {
-    switch(level) {
+    switch (level) {
       case "Bronce": return "text-amber-700 bg-amber-100"
       case "Plata": return "text-gray-500 bg-gray-100"
       case "Oro": return "text-yellow-600 bg-yellow-100"
@@ -101,7 +102,7 @@ export default function CustomerLayout({
     <div className="min-h-screen bg-background">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
@@ -114,16 +115,22 @@ export default function CustomerLayout({
       )}>
         <div className="flex items-center justify-between p-4 border-b border-border">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <PawPrint className="h-5 w-5 text-primary-foreground" />
+            <div className="flex items-center">
+              <Image
+                src="/logo-largo.png"
+                alt="Almatech"
+                width={200}
+                height={50}
+                className="h-10 w-auto"
+                priority
+              />
             </div>
-            <span className="font-bold text-xl text-foreground">Almatech</span>
           </Link>
           <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(false)}>
             <X className="h-5 w-5" />
           </Button>
         </div>
-        
+
         <nav className="p-4 space-y-1">
           {navigation.map((item) => {
             const isActive = pathname === item.href
@@ -133,8 +140,8 @@ export default function CustomerLayout({
                 href={item.href}
                 className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all",
-                  isActive 
-                    ? "bg-primary text-primary-foreground" 
+                  isActive
+                    ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 )}
                 onClick={() => setSidebarOpen(false)}
@@ -158,10 +165,14 @@ export default function CustomerLayout({
           {/* Logo */}
           <div className="flex items-center gap-2 px-6 py-5 border-b border-border">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
-                <PawPrint className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-xl text-foreground">Almatech</span>
+              <Image
+                src="/logo.png"
+                alt="Almatech"
+                width={1000}
+                height={1000}
+                className="h-20 w-auto"
+                priority
+              />
             </Link>
           </div>
 
@@ -183,7 +194,7 @@ export default function CustomerLayout({
                   </div>
                 </div>
               </div>
-              
+
               {/* Points Summary */}
               <div className="bg-card/80 rounded-xl p-3 mb-3">
                 <div className="flex items-center justify-between mb-1">
@@ -214,8 +225,8 @@ export default function CustomerLayout({
                   href={item.href}
                   className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group",
-                    isActive 
-                      ? "bg-primary text-primary-foreground shadow-md" 
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-md"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
                 >
@@ -256,9 +267,9 @@ export default function CustomerLayout({
         <header className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border">
           <div className="flex items-center justify-between px-4 lg:px-8 py-4">
             <div className="flex items-center gap-4">
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="lg:hidden"
                 onClick={() => setSidebarOpen(true)}
               >
